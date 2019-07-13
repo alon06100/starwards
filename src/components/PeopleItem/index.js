@@ -1,26 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import Header from '../common/Header';
 import Loader from '../common/Loader';
 import View from '../common/View';
-import { withRouter } from 'react-router-dom';
 import './index.scss';
 
 const PeopleItem = (props) => {
-  const [peopleItem, setPropleItem] = useState([]);
+  const [peopleItem, setPeopleItem] = useState([]);
   const [isLoading, toggleIsLoading] = useState(true);
 
-  useEffect(() => {
-    const id = props.match.params.id;
-    getPeopleItem(id);
-  }, [])
-
   const getPeopleItem = (id) => {
-    let url = `https://swapi.co/api/people/${id}/`;
+    const url = `https://swapi.co/api/people/${id}/`;
     axios.get(url)
       .then((response) => {
-        setPropleItem(response.data);
+        setPeopleItem(response.data);
         toggleIsLoading(false);
       })
       .catch((error) => {
@@ -28,14 +22,19 @@ const PeopleItem = (props) => {
       });
   };
 
+  useEffect(() => {
+    const { id } = props.match.params;
+    getPeopleItem(id);
+  }, []);
+
   const PersonList = () => (
     Object.keys(peopleItem).map(itemKey => (
       <div key={itemKey}>
-        <span className="person-key">{itemKey + ': '}</span>
+        <span className="person-key">{`${itemKey}: `}</span>
         <span>{peopleItem[itemKey]}</span>
       </div>
     ))
-  )
+  );
 
   return (
     <View>
@@ -48,7 +47,7 @@ const PeopleItem = (props) => {
         </div>
       </div>
     </View>
-  )
-}
+  );
+};
 
 export default withRouter(PeopleItem);

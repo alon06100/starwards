@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss'
+import './index.scss';
 
 const View = ({ children }) => (
   <div id="main-page-container">
@@ -7,6 +7,6 @@ const View = ({ children }) => (
       {children}
     </div>
   </div>
-)
+);
 
 export default View;
