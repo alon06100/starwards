@@ -1,0 +1,15 @@
+#main-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  #main-page-wrapper {
+    width: 720px;
+    max-width: 90%;
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+  }
+}
