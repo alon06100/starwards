@@ -2,6 +2,9 @@
 
 A PWA fully responsive app, shows data about Starwars characters by using swapi API.
 
+# `Live Demo`
+https://starwarsmuseum.herokuapp.com/
+
 ## `How to run`
 
 1. npm install.
